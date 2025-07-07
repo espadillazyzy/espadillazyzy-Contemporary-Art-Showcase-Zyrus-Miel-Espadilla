@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contemporary Art Showcase | Zyrus Miel Espadilla</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Permanent Marker', cursive;
+      background: #fff;
+      background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+      color: #000;
+    }
+    header {
+      background: #000;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: white;
+      font-size: 3rem;
+      text-shadow: 2px 2px #000000;
+      border-bottom: 5px dashed #fff;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #fff;
+      padding: 1rem;
+      gap: 2rem;
+      border-bottom: 2px dashed #000;
+    }
+    nav a {
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 2rem 1rem;
+    }
+    .intro {
+      background: #fff;
+      text-align: center;
+      font-size: 1.4rem;
+      border: 4px dashed #000;
+      margin: 1rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .art-card {
+      background: #fff;
+      border: 3px dashed #000;
+      border-radius: 10px;
+      box-shadow: 5px 5px 0px #000;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .art-card:hover {
+      transform: scale(1.03);
+    }
+    .art-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1rem;
+    }
+    .caption {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .artist {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 95%;
+      max-width: 700px;
+      position: relative;
+      text-align: center;
+      border: 3px dashed #000;
+      box-shadow: 5px 5px 0px #000;
+    }
+    .modal-content img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      border: 2px dashed #000;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #000;
+    }
+    #modalDesc {
+      color: #333;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    @media (max-width: 600px) {
+      header { font-size: 2rem; }
+      .intro, .caption, .artist { font-size: 1rem; }
+      nav a { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Contemporary Art Showcase</header>
+
+  <nav>
+    <a href="#intro">Introduction</a>
+    <a href="#gallery">Artworks</a>
+    <a href="#credits">Credits</a>
+  </nav>
+
+  <!-- Introduction -->
+  <section id="intro" class="intro">
+    <h2>Welcome!</h2>
+    <p>Hi! I'm <strong>Zyrus Miel Espadilla</strong>, and this is my Contemporary Arts performance task. This interactive website highlights 10 creative works from my friends and classmates, featuring different art forms and styles.</p>
+  </section>
+ 
+
+  <!-- Art Gallery -->
+  <section id="gallery">
+    <h2 style="text-align:center; margin-bottom:2rem;">🎨 Featured Artworks</h2>
+     <p style="text-align: center;">Click any of the artworks to learn more!</p>
+    <div class="gallery">
+      <!-- Each card links to full image & description -->
+      <div class="art-card" onclick="openModal(1, 'Unknown Duck - YCEL.jpg')">
+        <img src="Unknown Duck - YCEL.jpg" alt="Artwork 1">
+        <div class="card-content">
+          <div class="caption">"Unknown Duck"</div>
+          <div class="artist">by Ycel Ann Magpoc — Painting</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(2, 'The Beauty of Death - RAINE.jpg')">
+        <img src="The Beauty of Death - RAINE.jpg" alt="Artwork 2">
+        <div class="card-content">
+          <div class="caption">"The Beauty of Death"</div>
+          <div class="artist">by Raine Ian Estalane — Painting</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(3, 'Stare - RAINE.jpg')">
+        <img src="Stare - RAINE.jpg" alt="Artwork 3">
+        <div class="card-content">
+          <div class="caption">"Stare"</div>
+          <div class="artist">by Raine Ian Estalane — Painting</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(4, 'Kaoruko Waguri - RYAN.jpg')">
+        <img src="Kaoruko Waguri - RYAN.jpg" alt="Artwork 4">
+        <div class="card-content">
+          <div class="caption">"Kaoruko Waguri"</div>
+          <div class="artist">by Ryan Ramos — Drawing</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(5, 'Johnny Joestar - CLIFFORD.jpg')">
+        <img src="Johnny Joestar - CLIFFORD.jpg" alt="Artwork 5">
+        <div class="card-content">
+          <div class="caption">"Johnny Joestar"</div>
+          <div class="artist">by James Clifford Flaviano — Drawing</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(6, 'Idol Shadow Poster - RYAH.jpg')">
+        <img src="Idol Shadow Poster - RYAH.jpg" alt="Artwork 6">
+        <div class="card-content">
+            <div class="caption">"Idol Shadow Poster"</div>
+            <div class="artist">by Ryah Denise Tamayo (RDPTArts) — Digital Art</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(7, 'A Place with Memories - YCEL.jpg')">
+        <img src="A Place with Memories - YCEL.jpg" alt="Artwork 7">
+        <div class="card-content">
+            <div class="caption">"A Place with Memories"</div>
+            <div class="artist">by Ycel Ann Magpoc — Painting</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(8, 'Coin in the Castle - RAINE.jpg')">
+        <img src="Coin in the Castle - RAINE.jpg" alt="Artwork 8">
+        <div class="card-content">
+            <div class="caption">"Coin in the Castle"</div>
+            <div class="artist">by Raine Ian Estalane — Mixed Media</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(9, 'Second Meet - JAZZ.jpg')">
+        <img src="Second Meet - JAZZ.jpg" alt="Artwork 9">
+        <div class="card-content">
+            <div class="caption">"Second Meet"</div>
+            <div class="artist">by JRadaza — Digital Art</div>
+        </div>
+      </div>
+      <div class="art-card" onclick="openModal(10, 'The Spot - DAN.jpg')">
+        <img src="The Spot - DAN.jpg" alt="Artwork 10">
+        <div class="card-content">
+            <div class="caption">"The Spot"</div>
+            <div class="artist">by Daniel P. Ramirez — Drawing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Viewer -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Full Artwork">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <!-- Credits -->
+  <section id="credits">
+    <h2 style="text-align:center; margin-bottom:1rem;">📜 Credits</h2>
+    <ul style="list-style:none; text-align:center; font-size:1.1rem;">
+      <li>Website Developer & Designer: <br><strong>Zyrus Miel Espadilla</strong></li>
+      <li>Content: Personal artworks by my classmates and friends</li>
+      <li>Graphics: Student artworks photographed</li>
+      <li>Class: Contemporary Arts — Grade 12</li>
+      <li>Submitted to: Teacher Daizy Gonzales</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Zyrus Miel Espadilla | Contemporary Arts Performance Task
+  </footer>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalImg = document.getElementById('modalImg');
+
+    const descriptions = [
+      "Though the artist left no official description, this piece quietly captures the serene beauty of nature through the image of an unknown duck gliding across a calm, inviting pond. The stillness of the water and the duck’s gentle presence evoke a sense of peace and simplicity. It reminds us of the quiet moments in life that often go unnoticed—yet hold a quiet, enduring charm.",
+      "The original painter is Jacopo Ligozzi with the line up of works titled \"Memento mori\". This piece is intended to show that we need to remember that we'll die one day, the slow but unavoidable fate that we call death. It shows that we must enjoy and treasure the life we have right now since we never know when we'll die.",
+      "The main idea of this piece is to show the hardship of young childrens in the slums who are living below the poverty line.",
+      "\"The Fragrant Flower Blooms With Dignity\" (also known as \"Kaoru Hana wa Rin to Saku\") is a Japanese manga series about a boy named Rintaro and a girl named Kaoruko who attend neighboring, but vastly different, schools. Rintaro, with a tough exterior but gentle heart, attends a school for boys with poor academic records, while Kaoruko attends an elite girls' academy. Despite their different backgrounds, they develop a close friendship that is challenged by the social barriers between their schools. The story explores themes of prejudice, friendship, and first love, with a focus on the couple's journey to overcome societal expectations. ",
+      "The main protagonist of the hit manga \"Jojos Bizzare Adventure: Steel Ball Run\" by Hirohiko Araki",
+      "This digital art is the idol version of Shadow the Hedgehog. This variant is known as \"Idol Shadow.\" He's made for two Sonic applications — Sonic Dash and Sonic Forces: Speed Battle. I have Sonic Dash on my phone and I actually unlocked him there. I was super happy about it, so I decided to do the Idol Shadow Poster to celebrate. While I was drawing Idol Shadow, I was overwhelmed because of the details added on his outfit. Eventually, I mentally told myself, \"Remember why you've come so far.\" And so, I persevered and finished this poster. It took me two days before I fully accomplished it.",
+      "Although the artist provided no official statement, A Place with Memories appears to capture a heartfelt moment shared between two individuals standing before the entrance of Kemah Boardwalk. With soft brushstrokes and warm expressions, the painting evokes a sense of nostalgia, joy, and connection. The location, full of color and structure, serves not just as a backdrop, but as a symbol of shared experience—of memories made and moments treasured. It invites viewers to reflect on their own meaningful places and the people who make them unforgettable.  ",
+      "The holes in the painting are coin slots, the coins i placed are coins all around the world and are covered by a plastic film. This art was meant as a gift to a friend",
+      "Second Meet captures a fleeting, emotional moment—filled with soft hues of pink and blue, the atmosphere feels nostalgic and dreamlike. The central figure, holding a melodica and looking off into the distance, seems caught in thought—perhaps reliving a memory or anticipating a reunion. The gentle lighting and pastel sky suggest a sense of hope and quiet emotion, evoking the feeling of reconnecting with something once lost or longed for. Without words, the artwork invites us to reflect on second chances, past encounters, and the music that bridges them.",
+      "The Spot is a villain from the animated film Spider-Man: Across the Spider-Verse. I was inspired to draw this character because of his unique design and cool, striking presence."
+    ];
+
+    function openModal(index, imgSrc) {
+      const cards = document.querySelectorAll('.art-card');
+      modalTitle.textContent = cards[index - 1].querySelector('.caption').textContent;
+      modalDesc.textContent = descriptions[index - 1];
+      modalImg.src = imgSrc;
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
